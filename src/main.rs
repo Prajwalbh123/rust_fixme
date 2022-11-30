@@ -28,6 +28,17 @@ struct Color {
     green: u8,
     blue: u8,
 }
+/// added display function to Color similar to that of City
+impl Display for Color {      
+    // `f` is a buffer, this method must write the formatted string into it
+    ///added code similar to City to display without the {:?}
+    fn fmt(&self, f: &mut Formatter) -> fmt::Result {       
+        
+        write!(f, "red: {0},green: {1},blue: {2}",
+        self.red, self.green, self.blue,
+        )
+    }
+}
 
 fn main() {
     for city in [
@@ -37,13 +48,14 @@ fn main() {
     ].iter() {
         println!("{}", *city);
     }
-
+    
     for color in [
         Color { red: 128, green: 255, blue: 90 },
         Color { red: 0, green: 3, blue: 254 },
         Color { red: 0, green: 0, blue: 0 },
     ].iter() {
         // Hint : Fix the code so you can print it using {}
-        println!("{:?}", *color);
+        ///Code now works
+        println!("{}", *color);
     }
 }
